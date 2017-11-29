@@ -455,6 +455,19 @@ module.exports = {
           pageTitle: 'OTHER_LIST',
           uploadTemplateID: 'default',
           showTopListInHome: false
+        },
+        {
+          enable: true,
+          name: 'TVDRAMA',
+          value: 'tvdrama',
+          title: 'MENU_TORRENTS_SUB.TVDRAMA',
+          divider: false,
+          position: 11,
+          state: 'torrents.tvdrama',
+          url: '/tvdrama',
+          pageTitle: 'TV_DRAMA',
+          uploadTemplateID: 'tvdrama',
+          showTopListInHome: true
         }
       ]
     },
@@ -787,7 +800,7 @@ module.exports = {
         },
         {
           name: 'TYPE',
-          cats: ['movie', 'tvserial'],
+          cats: ['movie', 'tvserial', 'tvdrama'],
           value: [
             {name: 'BLU_RAY', icon: ''},
             {name: 'REMUX', icon: ''},
@@ -797,7 +810,7 @@ module.exports = {
         },
         {
           name: 'RESOLUTION',
-          cats: ['movie', 'tvserial', 'music', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'music', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'S4K', icon: ''},
             {name: 'S1080P', icon: ''},
@@ -807,7 +820,7 @@ module.exports = {
         },
         {
           name: 'VIDEO',
-          cats: ['movie', 'tvserial', 'music', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'music', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'AVC', icon: ''},
             {name: 'X265', icon: ''},
@@ -816,7 +829,7 @@ module.exports = {
         },
         {
           name: 'AUDIO',
-          cats: ['movie', 'tvserial', 'music', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'music', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'AAC', icon: ''},
             {name: 'AC3', icon: ''},
@@ -837,7 +850,7 @@ module.exports = {
         },
         {
           name: 'CHANNEL',
-          cats: ['movie', 'tvserial', 'music', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'music', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'C20', icon: ''},
             {name: 'C51', icon: ''},
@@ -855,7 +868,7 @@ module.exports = {
         },
         {
           name: 'MOVIE_SUB_CAT',
-          cats: ['movie', 'tvserial'],
+          cats: ['movie', 'tvserial', 'tvdrama'],
           value: [
             {name: 'CARTOON', icon: ''},
             {name: 'DOCUMENTARY', icon: ''}
@@ -876,7 +889,7 @@ module.exports = {
         },
         {
           name: 'REGION',
-          cats: ['movie', 'tvserial', 'music', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'music', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'USA', icon: ''},
             {name: 'CHINA', icon: ''},
@@ -948,7 +961,7 @@ module.exports = {
       checkbox: [
         {
           name: 'MODIFY',
-          cats: ['movie', 'tvserial', 'sports', 'variety'],
+          cats: ['movie', 'tvserial', 'sports', 'variety', 'tvdrama'],
           value: [
             {name: 'DIY', icon: ''},
             {name: 'GUOPEI', icon: ''},
@@ -957,7 +970,7 @@ module.exports = {
         },
         {
           name: 'RANKING',
-          cats: ['movie', 'tvserial'],
+          cats: ['movie', 'tvserial', 'tvdrama'],
           value: [
             {name: 'IMDB_TOP100', icon: ''},
             {name: 'IMDB_TOP250', icon: ''},
