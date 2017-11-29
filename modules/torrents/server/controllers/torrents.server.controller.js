@@ -96,6 +96,17 @@ exports.searchmovie = function (req, res) {
         res.json(info);
       }
     });
+  } else if (type === 'tvdrama') {
+    tmdb.searchTv({
+      language: req.params.language,
+      query: req.query.query
+    }, function (err, info) {
+      if (err) {
+        res.status(900).send(err);
+      } else {
+        res.json(info);
+      }
+    });
   }
 };
 
