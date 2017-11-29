@@ -345,6 +345,9 @@
         case 'tvserial':
           vm.createTVTorrent();
           break;
+        case 'tvdrama':
+          vm.createTVTorrent();
+          break;
         default:
           vm.createCustomTorrentTorrent();
       }
@@ -401,6 +404,47 @@
         maker: vm.maker === 'NULL' ? undefined : vm.maker,
         torrent_filename: vm.torrentInfo.filename,
         torrent_type: 'tvserial',
+        torrent_seasons: vm.selectedSeasons,
+        torrent_episodes: vm.inputedEpisodes,
+        torrent_tags: t,
+        torrent_nfo: vm.videoNfo,
+        torrent_announce: vm.torrentInfo.announce,
+        torrent_size: l,
+
+        resource_detail_info: vm.tvinfo
+      });
+
+      torrent.$save(function (response) {
+        successCallback(response);
+      }, function (errorResponse) {
+        errorCallback(errorResponse);
+      });
+
+      function successCallback(res) {
+        Notification.success({message: '<i class="glyphicon glyphicon-ok"></i> Torrent created successfully!'});
+
+        $state.reload('torrents.uploads');
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
+
+      function errorCallback(res) {
+        vm.error_msg = res.data.message;
+        Notification.error({message: res.data.message, title: '<i class="glyphicon glyphicon-remove"></i> Torrent created error!'});
+      }
+    };
+
+    /**
+     * createTvDrama
+     */
+    vm.createTVTorrent = function () {
+      var l = vm.getTorrentSize();
+      var t = vm.getResourceTag();
+
+      var torrent = new TorrentsService({
+        info_hash: vm.torrentInfo.info_hash,
+        maker: vm.maker === 'NULL' ? undefined : vm.maker,
+        torrent_filename: vm.torrentInfo.filename,
+        torrent_type: 'tvdrama',
         torrent_seasons: vm.selectedSeasons,
         torrent_episodes: vm.inputedEpisodes,
         torrent_tags: t,
@@ -558,6 +602,7 @@
       switch (t) {
         case 'movie':
         case 'tvserial':
+        case 'tvdrama':
         case 'music':
         case 'sports':
         case 'variety':
