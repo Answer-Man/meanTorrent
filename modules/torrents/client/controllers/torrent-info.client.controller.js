@@ -416,7 +416,7 @@
           icon: 'fa-file-text',
           title: $translate.instant('TAB_USER_SUBTITLE'),
           templateUrl: 'subtitleInfo.html',
-          ng_show: vm.torrentLocalInfo.torrent_type === 'movie' || vm.torrentLocalInfo.torrent_type === 'tvserial',
+          ng_show: vm.torrentLocalInfo.torrent_type === 'movie' || vm.torrentLocalInfo.torrent_type === 'tvserial' || vm.torrentLocalInfo.torrent_type === 'tvdrama',
           badges: [
             {
               value: vm.torrentLocalInfo._subtitles.length,
@@ -495,6 +495,18 @@
         });
       }
       if (vm.torrentLocalInfo.torrent_type === 'tvserial') {
+        TorrentsService.getTMDBTVInfo({
+          tmdbid: tmdb_id,
+          language: getStorageLangService.getLang()
+        }, function (res) {
+          vm.doUpdateTorrentInfo(res);
+        }, function (err) {
+          Notification.error({
+            message: '<i class="glyphicon glyphicon-remove"></i> ' + $translate.instant('TMDB_INFO_FAILED')
+          });
+        });
+      }
+      if (vm.torrentLocalInfo.torrent_type === 'tvdrama') {
         TorrentsService.getTMDBTVInfo({
           tmdbid: tmdb_id,
           language: getStorageLangService.getLang()
@@ -866,6 +878,20 @@
             });
           }
         });
+    };
+
+    /**
+     * getSaleTypeDesc
+     */
+    vm.getSaleTypeDesc = function () {
+      var desc = '';
+
+      angular.forEach(vm.torrentSalesType.value, function (st) {
+        if (st.name === vm.torrentLocalInfo.torrent_sale_status) {
+          desc = st.desc;
+        }
+      });
+      return desc;
     };
 
     /**
